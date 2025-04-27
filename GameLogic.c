@@ -15,13 +15,22 @@ void inicializaCartela (int matriz[5][5]){
     }
 }
 
+void printaCartela(int matriz[5][5]){
 
+    for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+            printf( " %d  ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
 
 int main(){
 
 int cartela [5][5];
 
 inicializaCartela(cartela);
+printaCartela(cartela);
 
 
 return 0;
