@@ -1,6 +1,7 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
 
 void inicializaCartela (int matriz[5][5]){
 
@@ -43,15 +44,33 @@ void preencheCartela(int matriz [5][5]){
 }
 
 void printaCartela(int matriz[5][5]){
-    printf(" B   I   N   G   O\n");
-    printf("-------------------\n");
+    printf("------------------------------------\n");
+    printf(" B\t I\t N\t G\t O\n");
+    printf("------------------------------------\n");
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 5; j++){
-            printf( " %d  ", matriz[i][j]);
+            printf( " %d\t", matriz[i][j]);
         }
         printf("\n");
     }
-    printf("-------------------\n");
+    printf("------------------------------------\n");
+    printf("\n");
+}
+
+
+void sorteiaPedra(int matriz[5][5]){
+
+    while(!venceu){
+      int pedraSorteada = (rand() % 75) + 1;
+
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                if (matriz[i][j] == pedraSorteada){
+                    matriz [i][j] = 0;          
+                }
+            }
+        }
+    }
 }
 
 int main(){
