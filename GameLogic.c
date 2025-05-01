@@ -57,6 +57,45 @@ void printaCartela(int matriz[5][5]){
     printf("\n");
 }
 
+int condicaoVitora(int matriz[5][5]){
+    
+    for(int i; i< 5; i++){
+    int contador = 0;
+
+    for (int j = 0; j < 5; j++){
+        if (matriz[i][j] == 0){            // testa linha 
+            contador++;
+            }   
+        }
+        if (contador == 5 ){
+            return 1;
+        }
+    }
+
+    
+    for(int j; j< 5; j++){
+        int contador = 0;
+    
+        for (int i = 0; i< 5; i++){
+            if (matriz[i][j] == 0){            // testa coluna 
+                contador++;
+                }   
+            }
+            if (contador == 5 ){
+                return 1;
+            }
+        }
+
+    if (matriz[0][0] == 0 && matriz[1][1] == 0 && matriz[2][2] == 0 && matriz[3][3] == 0 && matriz[4][4] == 0){
+        return 1;                                                           // testa uma digonal
+    }
+
+    if (matriz[0][4] == 0 && matriz[1][3] == 0 && matriz[2][2] == 0 && matriz[3][1] == 0 && matriz[4][0] == 0){     
+        return 1;                                                          // testa a outra digonal
+    }
+
+    return 0;
+}
 
 void sorteiaPedra(int matriz[5][5]){
 
@@ -84,6 +123,9 @@ printaCartela(cartela);
 preencheCartela(cartela);
 printaCartela(cartela);
 
+if(condicaoVitora(cartela)){
+    printf("Voce venceu, completou uma quina!!!");
+}
 
 return 0;
 }
