@@ -18,30 +18,119 @@ void inicializaCartela (int matriz[5][5]){
 
 void preencheCartela(int matriz [5][5]){
 
-    for (int i = 0; i < 5; i++){ 
-        matriz[i][0] = (rand()% 15)+1;    //COLUNA B
-    }
+    int igual = 0;
 
+    int repetidosB[5];
     for (int i = 0; i < 5; i++){
-        matriz[i][1] = (rand()% 15)+ 16;    //COLUNA I
-    }
+        while(1){
+        int valorTemporario = (rand()% 15)+1;    //COLUNA B
+        igual = 0;
+        for (int j=0; j < 5; j++){
+            if(valorTemporario == repetidosB[j]){
+                igual = 1;
+                break;
+            }
+        }
 
-    for (int i = 0; i < 5; i++){
-          if(i == 2){
-            matriz[2][2] = 0;
-        }else{
-        matriz[i][2] = (rand()% 15)+ 31;    //COLUNA N
+            if (igual == 0){
+                matriz[i][0] = valorTemporario;
+                repetidosB[i] = valorTemporario;
+                break;
+
+            }
         }
     }
 
+    int repetidosI[5];
     for (int i = 0; i < 5; i++){
-        matriz[i][3] = (rand()% 15)+ 46;    //COLUNA G
+        while(1){
+        int valorTemporario = (rand()% 15)+16;    //COLUNA I
+        igual = 0;
+        for (int j=0; j < 5; j++){
+            if(valorTemporario == repetidosI[j]){
+                igual = 1;
+                break;
+            }
+        }
+        
+            if (igual == 0){
+                matriz[i][1] = valorTemporario;
+                repetidosI[i] = valorTemporario;
+                break;
+
+            }
+        }
     }
 
+    int repetidosN[5];
     for (int i = 0; i < 5; i++){
-        matriz[i][4] = (rand()% 15)+ 61;    //COLUNA O
+        if(i == 2){
+            matriz[2][2] = 0;
+            continue;
+        }
+        while(1){
+            int valorTemporario = (rand()% 15)+31;      //COLUNA N
+            igual = 0;
+      
+        for (int j=0; j < 5; j++){
+            if(valorTemporario == repetidosN[j]){
+                igual = 1;
+                break;
+            }
+        }
+        
+            if (igual == 0){
+                matriz[i][2] = valorTemporario;
+                repetidosN[i] = valorTemporario;
+                break;
+
+            }
+        }
+    }
+
+    int repetidosG[5];
+    for (int i = 0; i < 5; i++){
+        while(1){
+        int valorTemporario = (rand()% 15)+46;    //COLUNA G
+        igual = 0;
+        for (int j=0; j < 5; j++){
+            if(valorTemporario == repetidosG[j]){
+                igual = 1;
+                break;
+            }
+        }
+        
+            if (igual == 0){
+                matriz[i][3] = valorTemporario;
+                repetidosG[i] = valorTemporario;
+                break;
+
+            }
+        }
+    }
+
+    int repetidosO[5];
+    for (int i = 0; i < 5; i++){
+        while(1){
+        int valorTemporario = (rand()% 15)+61;    //COLUNA O
+        igual = 0;
+        for (int j=0; j < 5; j++){
+            if(valorTemporario == repetidosO[j]){
+                igual = 1;
+                break;
+            }
+        }
+        
+            if (igual == 0){
+                matriz[i][4] = valorTemporario;
+                repetidosO[i] = valorTemporario;
+                break;
+
+            }
+        }
     }
 }
+
 
 void printaCartela(int matriz[5][5]){
     printf("------------------------------------\n");
@@ -57,7 +146,7 @@ void printaCartela(int matriz[5][5]){
     printf("\n");
 }
 
-int condicaoVitora(int matriz[5][5]){
+int condicaoVitoria(int matriz[5][5]){
     
     for(int i; i< 5; i++){
     int contador = 0;
@@ -99,16 +188,19 @@ int condicaoVitora(int matriz[5][5]){
 
 void sorteiaPedra(int matriz[5][5]){
 
-    while(!venceu){
+    while(!condicaoVitoria(matriz)){
       int pedraSorteada = (rand() % 75) + 1;
+      printf("%d", pedraSorteada);
 
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 5; j++){
                 if (matriz[i][j] == pedraSorteada){
-                    matriz [i][j] = 0;          
+                    matriz [i][j] = 0;
+                    printaCartela(matriz);        
                 }
             }
         }
+
     }
 }
 
@@ -123,7 +215,7 @@ printaCartela(cartela);
 preencheCartela(cartela);
 printaCartela(cartela);
 
-if(condicaoVitora(cartela)){
+if(condicaoVitoria(cartela)){
     printf("Voce venceu, completou uma quina!!!");
 }
 
