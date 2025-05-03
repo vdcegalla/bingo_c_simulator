@@ -20,67 +20,6 @@ A simple Bingo game implemented in C where a random 5x5 card is generated and nu
 ## Running Locally
 1. Clone this repository:
    ```bash
-   git clone https://github.com/SEU_USUARIO/bingo-c.git
-   ```
-2. Compile o código com um compilador C, por exemplo:
-   ```bash
-   gcc bingo.c -o bingo
-   ```
-3. Execute:
-   ```bash
-   ./bingo
-   ```
-
-## Next Steps
-- Adicionar um modo multiplayer.
-- Melhorar a interface com opções de entrada do usuário.
-- Implementar cartelas personalizadas.
-- Criar versão com interface gráfica.
-
-## Technologies Used
-- C (Standard Library)
-- Terminal I/O (`stdio.h`)
-- Random number generation (`stdlib.h`, `time.h`)
-Se quiser que eu já substitua SEU_USUARIO pelo nome do seu usuário no GitHub, posso fazer isso também. Quer?
-
-
-
-
-
-
-
-Você disse:
-2. Compile o código com um compilador C, por exemplo: isso saiu em portugues
-
-
-O ChatGPT disse:
-Obrigado por avisar! Aqui está o README.md corrigido, com tudo em inglês e formatado como bloco de código para copiar e colar:
-
-markdown
-Copiar
-Editar
-# Bingo Game  
-A simple Bingo game implemented in C where a random 5x5 card is generated and numbers are drawn until a win condition (complete line, column, or diagonal) is met.
-
-## Features
-- Generates a valid 5x5 Bingo card.
-- Automatically draws unique random numbers from 1 to 75.
-- Marks numbers on the card as they are drawn.
-- Detects and stops when a winning condition is reached (horizontal, vertical, or diagonal line).
-- Displays the card after each draw.
-
-## How to Use
-1. Compile and run the C program.
-2. The game will:
-   - Generate and display a Bingo card.
-   - Start drawing numbers randomly.
-   - Mark drawn numbers on the card.
-   - Display the updated card after each draw.
-   - Stop when a "Bingo" (a full line, column, or diagonal of zeros) is achieved.
-
-## Running Locally
-1. Clone this repository:
-   ```bash
    git clone https://github.com/YOUR_USERNAME/bingo-c.git
    ```
 2. Compile the code using a C compiler, for example:
