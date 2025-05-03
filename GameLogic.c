@@ -133,7 +133,7 @@ void preencheCartela(int matriz [5][5]){
 
 
 void printaCartela(int matriz[5][5]){
-    printf("------------------------------------\n");
+    printf("\n------------------------------------\n");
     printf(" B\t I\t N\t G\t O\n");
     printf("------------------------------------\n");
     for (int i = 0; i < 5; i++){
@@ -148,7 +148,7 @@ void printaCartela(int matriz[5][5]){
 
 int condicaoVitoria(int matriz[5][5]){
     
-    for(int i; i< 5; i++){
+    for(int i=0; i< 5; i++){
     int contador = 0;
 
     for (int j = 0; j < 5; j++){
@@ -162,7 +162,7 @@ int condicaoVitoria(int matriz[5][5]){
     }
 
     
-    for(int j; j< 5; j++){
+    for(int j=0; j< 5; j++){
         int contador = 0;
     
         for (int i = 0; i< 5; i++){
@@ -188,18 +188,41 @@ int condicaoVitoria(int matriz[5][5]){
 
 void sorteiaPedra(int matriz[5][5]){
 
-    while(!condicaoVitoria(matriz)){
-      int pedraSorteada = (rand() % 75) + 1;
-      printf("%d", pedraSorteada);
+    int igual = 0;
+    int repetidos[75];
 
-        for(int i = 0; i < 5; i++){
-            for(int j = 0; j < 5; j++){
-                if (matriz[i][j] == pedraSorteada){
-                    matriz [i][j] = 0;
-                    printaCartela(matriz);        
-                }
+    for (int i = 0; i < 75; i++) {
+        repetidos[i] = -1;       //evitando lixo de memoria
+    }
+
+    int totalSorteada = 0;
+    
+    while(!condicaoVitoria(matriz)){
+        int pedraTemporaria = (rand() % 75) + 1;
+        igual = 0;
+
+        for(int k = 0; k < totalSorteada; k++){
+            if (pedraTemporaria == repetidos[k]){
+                igual = 1;
+                break;
             }
         }
+            if (igual == 0){
+                int pedraSorteada = pedraTemporaria;
+                repetidos[totalSorteada] = pedraTemporaria;
+                totalSorteada++;
+                printf("Pedra sorteada: %d", pedraSorteada); 
+            
+
+          for(int i = 0; i < 5; i++){
+              for(int j = 0; j < 5; j++){
+                  if (matriz[i][j] == pedraSorteada){
+                      matriz [i][j] = 0;       
+                  }
+              }
+          }
+          printaCartela(matriz); 
+      }
 
     }
 }
@@ -214,6 +237,7 @@ inicializaCartela(cartela);
 printaCartela(cartela);
 preencheCartela(cartela);
 printaCartela(cartela);
+sorteiaPedra(cartela);
 
 if(condicaoVitoria(cartela)){
     printf("Voce venceu, completou uma quina!!!");
